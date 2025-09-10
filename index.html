@@ -12,10 +12,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="./js/main.js"></script>
     <title>CONSTRUTEKS MEXICO</title>
 </head>
 <body>
-    <header class="flex container ff-normal fs-500">        
+    <header class="primary-header flex container ff-normal fs-500">        
         <nav>
             <div class="logo"><img src="./img/logo_nav.png" alt="CONSTRUTEKS"></div>
             <ul class="flex">
@@ -25,7 +26,7 @@
                 <li><a href="#">Más Opciones <i class="fa-solid fa-chevron-down fs-400"></i></a></li>
             </ul>
             <div class="wacta"><span>Contacto</span></div>
-            <div class="menuIsOpen grid gap-10">
+            <div class="menuIsOpen grid gap-10 hidden">
                 <div class="mio_content">
                     <h4>Navegación Principal</h4>
                     <div class="mio_item">
@@ -64,15 +65,60 @@
                         <a href="#">Descubra nuestras promociones y descuentos actuales.</a>
                     </div>
                 </div>
-                <div class="mio_content"><span>contenido</span></div>
-                <div class="mio_content"><span>contenido</span></div>
+                <div class="mio_content">
+                    <h4>lorem ipsum</h4>
+                    <div class="mio_item">
+                        <p>lorem ipsum</p>
+                        <a href="#">Lorem ipsum dolor sit amet.</a>
+                    </div>
+                    <div class="mio_item">
+                        <p>lorem ipsum</p>
+                        <a href="#">Lorem ipsum dolor sit amet.</a>
+                    </div>
+                    <div class="mio_item">
+                        <p>lorem ipsum</p>
+                        <a href="#">Lorem ipsum dolor sit amet.</a>
+                    </div>
+                    <div class="mio_item">
+                        <p>lorem ipsum</p>
+                        <a href="#">Lorem ipsum dolor sit amet.</a>
+                    </div>
+                </div>
+                <div class="mio_content">
+                    <h4>lorem ipsum</h4>
+                    <div class="mio_item">
+                        <p>lorem ipsum</p>
+                        <a href="#">Lorem ipsum dolor sit amet.</a>
+                    </div>
+                    <div class="mio_item">
+                        <p>lorem ipsum</p>
+                        <a href="#">Lorem ipsum dolor sit amet.</a>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
-    <main class="flex container">
-        <div class="hero">
-            <span>HERO</span>
-        </div>
+    <main class="container smooth-scroll">
+        <section class="hero-section">
+            <div class="hero-content flex">
+                <div class="hero-card">
+                    <h1 class="text-light ff-accent">Transforma tu construcción con Construteks</h1>
+                    <p class="ff-normal">En Construteks, ofrecemos soluciones innovadoras para optimizar tus proyectos de construcción. Descubre cómo nuestros productos de metal pueden mejorar la eficiencia y reducir costos.</p>
+                    <div class="hero-btn flex gap-10">
+                        <button class="cta-btn cta-btn-dark ff-normal fs-500 text-light">Descubre</button>
+                        <button class="cta-btn cta-btn-light ff-normal fs-500">Contàctanos</button>
+                    </div>
+                </div>
+                <img src="./img/dummy_logo.png" alt="Palo de CONSTRUTEKS" class="puntal" id="puntal">
+            </div>
+        </section>
     </main>
+<!--     <div class="watermark fs-500 ff-accesn text-accent">
+        <img src="./img/oble_sync.svg" alt="">
+        <p>CONSTRUTEKS </p>
+        <p>Git ver 000.2 Escritorio</p>
+        <p>Status:</p>
+        <p>Elaborando el codigo que oculta el menu "Mas opciones"</p>
+    </div> -->
 </body>
 </html>
