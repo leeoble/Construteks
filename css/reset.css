@@ -1,0 +1,92 @@
+/* ---------------------------- */
+/* 🌎 CSS RESET MODERNO 2025    */
+/* Basado en el de @leeoble :) */
+/* ---------------------------- */
+
+/* 1️⃣ Box sizing, márgenes y paddings */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2️⃣ Tipografía base y desplazamiento */
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+  scroll-behavior: smooth;
+}
+
+/* 3️⃣ Elementos de bloque básicos */
+body,
+h1, h2, h3, h4, h5, h6,
+p, figure, picture {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background-color: #fff;
+  color: #111;
+}
+
+/* 4️⃣ Imágenes y multimedia */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 5️⃣ Formularios y controles */
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* 6️⃣ Enlaces */
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* 7️⃣ Listas */
+ul, ol {
+  list-style: none;
+}
+
+/* 8️⃣ Tipografía semántica */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+  line-height: 1.2;
+}
+
+/* 9️⃣ Tablas */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 🔟 Accesibilidad: reducir animaciones si el usuario lo solicita */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

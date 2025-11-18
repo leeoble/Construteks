@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="shortcut icon" href="./img/oble_sync.svg" type="image/x-icon">
     <link rel="icon" href="./img/oble_sync.svg" type="image/x-icon">
@@ -12,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <script src="./js/main.js"></script>
+    <script type="module" src="./js/main.js" defer></script>
     <title>CONSTRUTEKS MEXICO</title>
 </head>
 <body>
@@ -25,7 +26,7 @@
                 <li><a href="#">Proyectos Actuales</a></li>
                 <li><a href="#">Más Opciones <i class="fa-solid fa-chevron-down fs-400"></i></a></li>
             </ul>
-            <div class="wacta"><span>Contacto</span></div>
+            <div class="wacta"><a href="#">Contacto</a></div>
             <div class="menuIsOpen grid gap-10 hidden">
                 <div class="mio_content">
                     <h4>Navegación Principal</h4>
@@ -100,25 +101,92 @@
     </header>
     <main class="container smooth-scroll">
         <section class="hero-section">
+            <!-- 🔹 Wrapper para controlar el recorte -->
+            <div class="hero-img-wrapper">
+                <div class="wrapper-relative">
+                    <img class="hero-building" src="./img/herobuild.png" alt="Edificio en construcción">
+                     <img src="./img/3dpole_animad.webp" alt="puntal de CONSTRUTEKS" class="puntal" id="puntal">
+                </div>
+            </div>
             <div class="hero-content flex">
                 <div class="hero-card">
-                    <h1 class="text-light ff-accent">Transforma tu construcción con Construteks</h1>
-                    <p class="ff-normal">En Construteks, ofrecemos soluciones innovadoras para optimizar tus proyectos de construcción. Descubre cómo nuestros productos de metal pueden mejorar la eficiencia y reducir costos.</p>
+                    <h1 class="text-blueish ff-accent">Transforma tu construcción con Construteks</h1>
+                   <!--  <p class="ff-normal text-light">En Construteks, ofrecemos soluciones innovadoras para optimizar tus proyectos de construcción. Descubre cómo nuestros productos de metal pueden mejorar la eficiencia y reducir costos.</p> -->
+                      <p class="ff-normal text-light">Soluciones metálicas que transforman tus proyectos de construcción: más eficiencia, menos costos.</p>
                     <div class="hero-btn flex gap-10">
-                        <button class="cta-btn cta-btn-dark ff-normal fs-500 text-light">Descubre</button>
-                        <button class="cta-btn cta-btn-light ff-normal fs-500">Contàctanos</button>
+                        <button class="cta-btn cta-btn-light ff-normal fs-500 text-light">Descubre nuestras soluciones</button>
+                        <button class="cta-btn cta-btn-dark ff-normal fs-500">Solicita una cotización</button>
                     </div>
                 </div>
-                <img src="./img/dummy_logo.png" alt="Palo de CONSTRUTEKS" class="puntal" id="puntal">
+            </div>
+        </section>
+        <section class="flex-column fact-section smooth-scroll b3green">
+            <h2 class="fw-700 fs-700 ff-accent text-light">El estándar profesional en estructuras metálicas</h2>
+            <p class="fact-sub fw-500 fs-500 ff-normal text-blueish">Soluciones diseñadas para superar las exigencias reales de obra: desempeño, seguridad y eficiencia en cada aplicación.</p>
+            <p class="fact-sub fw-500 fs-500 ff-normal text-blueish">Cada sistema está diseñado con parámetros de carga, estabilidad y durabilidad comprobados, ofreciendo datos claros para una selección técnica informada.</p>
+            <div class="fact-card-wrapper b3red">
+                <div class="fact-card tabindex="0">
+                    <div class="fact-card-title">CARACTERISTICAS</div>
+                    <div class="fact-card-content">
+                        <p>Small Fact A</p>
+                        <p>Small Fact B</p>
+                        <p>Small Fact C</p>
+                        <p>Small Fact D</p>
+                    </div>
+                    <div class="fact-card-media">
+                        <img src="./img/puntal_amarillo.png" alt="">
+                    </div>
+                    <div class="fact-card-cta">
+                        <button class="cta-btn-card cta-btn-light">Ficha Tecnica</button>
+                    </div>
+                </div>
+                <div class="fact-card" tabindex="0">
+                    <div class="fact-card-title">CARACTERISTICAS</div>
+                    <div class="fact-card-content">
+                        <p>Small Fact A</p>
+                        <p>Small Fact B</p>
+                        <p>Small Fact C</p>
+                        <p>Small Fact D</p>
+                    </div>
+                    <div class="fact-card-media">
+                        <img src="./img/puntal_amarillo.png" alt="">
+                    </div>
+                    <div class="fact-card-cta">
+                        <button class="cta-btn-card cta-btn-light">Ficha Tecnica</button>
+                    </div>
+                </div>
+                <div class="fact-card tabindex="0">
+                    <div class="fact-card-title">CARACTERISTICAS</div>
+                    <div class="fact-card-content">
+                        <p>Small Fact A</p>
+                        <p>Small Fact B</p>
+                        <p>Small Fact C</p>
+                        <p>Small Fact D</p>
+                    </div>
+                    <div class="fact-card-media">
+                        <img src="./img/puntal_amarillo.png" alt="">
+                    </div>
+                    <div class="fact-card-cta">
+                        <button class="cta-btn-card cta-btn-light">Ficha Tecnica</button>
+                    </div>
+                </div>
+                <div class="fact-card tabindex="0">
+                    <div class="fact-card-title">CARACTERISTICAS</div>
+                    <div class="fact-card-content">
+                        <p>Small Fact A</p>
+                        <p>Small Fact B</p>
+                        <p>Small Fact C</p>
+                        <p>Small Fact D</p>
+                    </div>
+                    <div class="fact-card-media">
+                        <img src="./img/puntal_amarillo.png" alt="">
+                    </div>
+                    <div class="fact-card-cta">
+                        <button class="cta-btn-card cta-btn-light">Ficha Tecnica</button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-<!--     <div class="watermark fs-500 ff-accesn text-accent">
-        <img src="./img/oble_sync.svg" alt="">
-        <p>CONSTRUTEKS </p>
-        <p>Git ver 000.2 Escritorio</p>
-        <p>Status:</p>
-        <p>Elaborando el codigo que oculta el menu "Mas opciones"</p>
-    </div> -->
 </body>
 </html>
