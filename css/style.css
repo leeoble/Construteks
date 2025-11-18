@@ -348,7 +348,6 @@ nav .hidden {
   pointer-events: none;
   z-index: 901;
   will-change: transform;
-  border: 1px solid yellow;
 }
 
 .hero-section .hero-content {
@@ -393,7 +392,7 @@ nav .hidden {
 }
 
 /* ------------------- */
-/* OTHER SECTIONS      */
+/* FACT SECTION.       */
 /* ------------------- */
 body {
   position: relative;
@@ -401,7 +400,7 @@ body {
 
 .fact-section {
   width: 100%;
-  height: calc(100vh - 10vh);
+  min-height: calc(100vh - 10vh);
   /*height: minmax(100vh, 100%)*/;
   background-color: var(--newblue);
   background-image: url(../img/facts_bg.png);
@@ -500,11 +499,8 @@ body {
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 2rem;
   align-items: center;
-}
-.fact-footer *{
-  margin: 1rem 0;
 }
 
 .fact-footer-text {
@@ -512,8 +508,186 @@ body {
 }
 
 .fact-footer-btn {
-  /* reutiliza la base de cta-btn-card pero puedes ajustar si quieres */
   padding-inline: 2.4rem;
   font-size: 1.5rem;
   background-color: var(--accent-color);
+}
+
+/* ========================= */
+/* PROYECTOS / OBRA REAL     */
+/* ========================= */
+
+.projects-section {
+  background-color: var(--offwhite);
+  /* grid técnico muy suave */
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  padding-block: 8rem;
+}
+
+.projects-inner {
+  max-width: 120rem;
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+/* Header */
+
+.projects-header {
+  max-width: 70rem;
+  margin: 0 auto 4rem auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.section-kicker {
+  font-weight: 600;
+}
+
+.projects-intro {
+  line-height: 1.6;
+}
+
+/* Grid principal: GRID */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3rem;
+}
+
+/* Card: FLEX interno */
+
+.project-card {
+  background-color: #ffffff;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.16);
+  display: flex;
+  flex-direction: column;
+  transition: transform 180ms ease-out,
+              box-shadow 180ms ease-out;
+  transform: translateZ(0);
+  will-change: transform, box-shadow;
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  transform: translateY(-0.6rem);
+  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.28);
+}
+
+/* Media */
+
+.project-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Contenido */
+
+.project-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  height: 100%;
+}
+
+.project-tag {
+  opacity: 0.8;
+}
+
+.project-title {
+  line-height: 1.25;
+}
+
+.project-description {
+  line-height: 1.6;
+}
+
+/* Métricas */
+
+.project-metrics {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 2rem;
+  padding: 0;
+  margin: 0;
+}
+
+/* Link */
+
+.project-link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: var(--tarssteel);
+  position: relative;
+}
+
+.project-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.2rem;
+  width: 0%;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 180ms ease-out;
+}
+
+.project-link:hover::after {
+  width: 100%;
+}
+
+/* Footer de la sección */
+
+.projects-footer {
+  margin-top: 4rem;
+  max-width: 60rem;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  align-items: center;
+}
+
+.projects-footer-text {
+  line-height: 1.6;
+}
+
+.projects-footer-btn {
+  padding-inline: 2.4rem;
+  background-color: var(--accent-color);
+  color: var(--warmblack);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-inner {
+    padding-inline: 1.6rem;
+  }
 }
