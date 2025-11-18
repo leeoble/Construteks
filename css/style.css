@@ -518,11 +518,11 @@ body {
 /* ========================= */
 
 .projects-section {
-  background-color: var(--offwhite);
+  background-color: var(--newblue);
   /* grid técnico muy suave */
   background-image:
-    linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 40px 40px;
   padding-block: 8rem;
 }
@@ -607,6 +607,7 @@ body {
 
 .project-title {
   line-height: 1.25;
+  color: var(--tarsblack);
 }
 
 .project-description {
