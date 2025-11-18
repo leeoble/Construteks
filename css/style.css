@@ -401,7 +401,7 @@ body {
 
 .fact-section {
   width: 100%;
-  height: calc(100vh - 0vh);
+  height: calc(100vh - 10vh);
   /*height: minmax(100vh, 100%)*/;
   background-color: var(--newblue);
   background-image: url(../img/facts_bg.png);
@@ -492,4 +492,28 @@ body {
   bottom: 0;
   width: 100%;
   margin-block: 5%;
+}
+.fact-footer {
+  margin-top: 4rem;
+  max-width: 60rem;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  align-items: center;
+}
+.fact-footer *{
+  margin: 1rem 0;
+}
+
+.fact-footer-text {
+  line-height: 1.5;
+}
+
+.fact-footer-btn {
+  /* reutiliza la base de cta-btn-card pero puedes ajustar si quieres */
+  padding-inline: 2.4rem;
+  font-size: 1.5rem;
+  background-color: var(--accent-color);
 }
