@@ -135,6 +135,9 @@
   font-weight: 500;
   cursor: pointer;
   transition: box-shadow .3s ease, transform .5s ease;
+      transform .2s ease-out,
+    box-shadow .2s ease-out,
+    background-color .2s ease-out;
 }
 
 /* === VARIANTES === */
@@ -158,6 +161,16 @@
   transform: translateY(0);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+.cta-btn-light:hover,
+.cta-btn-dark:hover {
+  transform: translateY(-0.2rem); /* 2px */
+  box-shadow: 0 0.6rem 1.6rem rgba(0,0,0,0.25);
+}
+
+.cta-btn-dark:hover {
+  transform: translateY(-0.2rem) scale(1.02);
+}
+
 /* === BASE === */
 .cta-btn-card {
   padding: 1rem 1.8rem;          /* 10px vertical, 18px horizontal */
@@ -343,13 +356,19 @@ nav .hidden {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-0%, -50%);
+  --puntal-pos: translate(60%, -50%); /* la posición fija */
+  transform: var(--puntal-pos);
   height: var(--puntal-tamaño);
   pointer-events: none;
   z-index: 901;
+  animation: puntal-float 9s ease-in-out infinite;
   will-change: transform;
 }
-
+@keyframes puntal-float {
+  0%   { transform: var(--puntal-pos) translateY(0); }
+  50%  { transform: var(--puntal-pos) translateY(-0.8rem); }
+  100% { transform: var(--puntal-pos) translateY(0); }
+}
 .hero-section .hero-content {
   max-width: 50%;
   height: 100%;
@@ -364,6 +383,17 @@ nav .hidden {
   width: clamp(300px, 85%, 900px);
   height: max-content;
   padding: 2rem;
+  opacity:0;
+  transform: translateY(1.5rem);  /* baja 20px */
+  animation: hero-card-in 700ms cubic-bezier(.22,.61,.36,1) forwards;
+  animation-delay: 150ms;
+  will-change: opacity, transform;
+}
+@keyframes hero-card-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .hero-section .hero-card h1 {
   max-width: 18ch;
