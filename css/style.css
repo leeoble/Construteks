@@ -134,10 +134,11 @@
   border: 1px solid #000;
   font-weight: 500;
   cursor: pointer;
-  transition: box-shadow .3s ease, transform .5s ease;
-      transform .2s ease-out,
+  transition:
+    transform .2s ease-out,
     box-shadow .2s ease-out,
-    background-color .2s ease-out;
+    background-color .2s ease-out,
+    color .2s ease-out;
 }
 
 /* === VARIANTES === */
@@ -165,10 +166,12 @@
 .cta-btn-dark:hover {
   transform: translateY(-0.2rem); /* 2px */
   box-shadow: 0 0.6rem 1.6rem rgba(0,0,0,0.25);
+  background-color: var(--accent-color);
 }
 
 .cta-btn-dark:hover {
   transform: translateY(-0.2rem) scale(1.02);
+  color: var(--warmblack);
 }
 
 /* === BASE === */
@@ -182,7 +185,11 @@
   color: var(--warmblack);
   border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
-  transition: transform .25s ease, box-shadow .25s ease, background-color .5s ease;
+  transition: 
+    transform .25s ease-in-out, 
+    box-shadow .25s ease-in-out, 
+    border .25s ease-in-out, 
+    background-color .5s ease-in-out;
 }
 /* === INTERACCIONES === */
 .cta-btn-card:hover {
@@ -542,7 +549,9 @@ body {
   font-size: 1.5rem;
   background-color: var(--accent-color);
 }
-
+.fact-footer-btn:hover {
+ border-color: var(--blueish);
+}
 /* ========================= */
 /* PROYECTOS / OBRA REAL     */
 /* ========================= */
@@ -642,6 +651,8 @@ body {
 
 .project-description {
   line-height: 1.6;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 /* Métricas */
@@ -701,7 +712,6 @@ body {
 
 .projects-footer-btn {
   padding-inline: 2.4rem;
-  background-color: var(--accent-color);
   color: var(--warmblack);
 }
 
@@ -721,4 +731,102 @@ body {
   .projects-inner {
     padding-inline: 1.6rem;
   }
+}
+/* ========================= */
+/* SERVICIOS / EXPERTISE     */
+/* ========================= */
+.services-section{
+  background-color: var(--tarssteel);
+  padding-top: 8vh;
+}
+.services-section .services-inner{
+  max-width: 120rem;
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+/* Header */
+
+.services-header {
+  max-width: 70rem;
+  margin: 0 auto 4rem auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.services-intro {
+  line-height: 1.6;
+}
+
+/* Grid principal: GRID */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, 1fr);
+  gap: 3rem;
+  justify-items: center;
+  align-items: center;
+
+}
+
+.services-card{
+  width: 100%;
+  min-height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
+}
+/* Media */
+.services-card.services-img{
+  grid-area: 1 / 2 / 3 / 3;
+  height: clamp(40rem, 100%, 100%);
+  background: url(../img/serv.jpg) center / cover no-repeat;
+}
+.services-card .services-card-icon img{
+  width: 5rem;
+  filter: invert(1);
+}
+.services-icon4{
+  transform: rotate(45deg);
+}
+/* Contenido */
+.services-card .services-card-tittle{
+  line-height: 1.25;
+}
+.services-card .services-card-content {
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/*Footer*/
+.services-footer{
+  text-align: center;
+  padding-block: 6%;
+}
+.services-footer .services-btn {
+  color: var(--blueish);
+  border: 2px solid var(--blueish);
+  padding: 1rem;
+  font-family: var(--font-normal);
+  font-size: var(--fs-400);
+  box-shadow: 0 8px 10px rgba(0,0,0,0.2);
+  padding-inline: 2.4rem;
+    transition:
+    transform .2s ease-out,
+    box-shadow .2s ease-out,
+    background-color .2s ease-out,
+    color .2s ease-out;
+}
+.services-btn:hover {
+  transform: translateY(-0.2rem) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  background-color: rgba(17, 25, 40, 0.25);
+}
+.services-footer .services-footer-text{
+
 }
