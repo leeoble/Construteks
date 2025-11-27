@@ -35,14 +35,23 @@
     <header class="primary-header flex container ff-normal fs-500">        
         <nav aria-label="Navegación principal">
             <div class="logo"><img src="./assets/img/logo_nav.png" alt="CONSTRUTEKS"></div>
-            <ul class="flex">
-                <li><a href="#">Inicio Rápido</a></li>
+            <ul class="nav-items flex">
+                <li><a href="#">Inicio</a></li>
                 <li><a href="#">Servicios Clave</a></li>
                 <li><a href="#">Proyectos Actuales</a></li>
-                <li><a href="#">Más Opciones <i class="fa-solid fa-chevron-down fs-400"></i></a></li>
+                <li><a  class="chevron-wrapper" id="menu-btn-open" href="#">Más Opciones <img src="./assets/img/icons/chevron.svg" class="chevron"></img></a></li>
             </ul>
-            <div class="wacta"><a href="#" >Contacto</a></div>
-            <div class="menuIsOpen grid gap-10 hidden">
+            <div class="wacta">
+                <a href="#" >Contacto</a>
+            </div>
+            <div class="menu-btn-wrapper">
+                <div class="menu-btn not-active" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-mega-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="menuIsOpen main-mega-menu grid gap-10 hidden">
                 <div class="mio_content">
                     <h4>Navegación Principal</h4>
                     <div class="mio_item">
@@ -163,7 +172,7 @@
                         <p>Small Fact D</p>
                     </div>
                     <div class="fact-card-media">
-                        <img src="./assets/img/puntal_amarillo.png" alt="Imagen de un puntal amarillo Construteks loading="lazy" decoding="async" aria-hidden="true">
+                        <img src="./assets/img/puntal_amarillo.png" alt="Imagen de un puntal amarillo Construteks" loading="lazy" decoding="async" aria-hidden="true">
                     </div>
                     <div class="fact-card-cta">
                         <button class="cta-btn-card cta-btn-light">Ficha Tecnica</button>
@@ -330,7 +339,7 @@
                        <div class="services-card-tittle ff-accent fs-450 fw-700">
                         <p>Calidad y Eficiencia</p>
                        </div>
-                       <div class="services-card-content ff-normal fs-450 text-light">
+                       <div class="services-card-content ff-normal fs-400 text-light">
                         <p>Aseguramos que tu proyecto cumpla con estándares altos de calidad, seguridad y desempeño en obra.</p>
                        </div>
                     </article>
@@ -341,7 +350,7 @@
                         <div class="services-card-tittle ff-accent fs-450 fw-700">
                             <p>Asesoría Especializada</p>
                         </div>
-                        <div class="services-card-content ff-normal fs-450 text-light">
+                        <div class="services-card-content ff-normal fs-400 text-light">
                             <p>Te ofrecemos asesoría técnica especializada, adaptada a las características y retos específicos de tu proyecto.</p>
                         </div>
                     </article>
@@ -357,7 +366,7 @@
                         <div class="services-card-tittle ff-accent fs-450 fw-700">
                             <p>Control de Proyectos</p>
                         </div>
-                        <div class="services-card-content ff-normal fs-450 text-light">
+                        <div class="services-card-content ff-normal fs-400 text-light">
                             <p>Monitoreamos el avance de tu obra para asegurar entregas en tiempo y dentro del presupuesto acordado.</p>
                         </div>
                     </article>
@@ -368,7 +377,7 @@
                         <div class="services-card-tittle ff-accent fs-450 fw-700">
                             <p>Soluciones Personalizadas</p>
                         </div>
-                        <div class="services-card-content ff-normal fs-450 text-light">
+                        <div class="services-card-content ff-normal fs-400 text-light">
                             <p>Desarrollamos soluciones a medida para tu proyecto, optimizando recursos, tiempos y costos.</p>
                         </div>
                     </article>
@@ -396,11 +405,11 @@
                     Con esta información preliminar podemos sugerirte sistemas, capacidades y tiempos adecuados para tu obra.
                     </p>
                     <form class="project-share-form" action="procesar.php" method="POST">
-                        <p class="project-share-kicker ff-normal fs-300 fw-600 text-dark2 uppercase">información del proyecto.</p>
+                        <p class="project-share-kicker ff-normal fs-300 fw-600 text-dark2 uppercase">información del proyecto</p>
                         <div class="project-input-group">
                             <label for="tipo">Tipo de proyecto</label>
                                 <select id="tipo" name="tipo" required>
-                                    <option value="">Selecciona una opción</option>
+                                    <option value="" disabled selected>Selecciona una opción</option>
                                     <option value="nave">Nave industrial</option>
                                     <option value="logistico">Centro logístico</option>
                                     <option value="comercial">Comercial</option>
@@ -421,15 +430,20 @@
                             <textarea   id="nota" 
                                         name="nota"
                                         rows="4" 
-                                        placeholder="Cuéntanos condiciones de carga, claros, tipo de estructura o cualquier dato relevante. (500 Caracteres maximo)" 
-                                        required></textarea>
+                                        placeholder="Cuéntanos condiciones de carga, claros, tipo de estructura o cualquier dato relevante."
+                                        maxlength="500"
+                                        aria-describedby="nota-help"
+                                        required>
+                            </textarea>
+                            <p id="nota-help" class="project-help">Hasta 500 Caracteres.</p>
                         </div>
                         <div class="project-input-usuario">
-                            <p class="project-share-kicker ff-normal fs-300 fw-600 text-dark2 uppercase">información de contacto.</p>
+                            <p class="project-share-kicker ff-normal fs-300 fw-600 text-dark2 uppercase">información de contacto</p>
                             <div class="project-input-group">
                                 <label  for="nombre">Nombre</label>
                                 <input  id="nombre"
                                         name="nombre"
+                                        autocomplete="name"
                                         placeholder="Nombre y apellido"
                                         type="text"
                                         required>
@@ -439,6 +453,7 @@
                                 <label  for="telefono">Telefono</label>
                                 <input  id="telefono"
                                         name="telefono"
+                                        autocomplete="tel"
                                         placeholder="Movil o Whatsapp"
                                         type="tel"
                                         required>
@@ -447,6 +462,7 @@
                                     <label  for="correo">Correo</label>
                                 <input  id="correo"
                                         name="correo"
+                                        autocomplete="email"
                                         placeholder="Correo electronico"
                                         type="email"
                                         required>
@@ -527,7 +543,7 @@
                         <!-- reemplazar por iconos SVG más adelante -->
                         <a href="#" aria-label="LinkedIn"><img class="icon-linkedin footer-icon" src="./assets/img/icons/linkedin.svg" alt="Linkedin"></a>
                         <a href="#" aria-label="Instagram"><img class="footer-icon icon-instagram" src="./assets/img/icons/instagram.svg" alt="Instagram"></a>
-                        <a href="#" aria-label="YouTube"><img class="footer-icon icon-yt" src="./assets/img/icons/youtube.svg" alt=""></a>
+                        <a href="#" aria-label="YouTube"><img class="footer-icon icon-yt" src="./assets/img/icons/youtube.svg" alt="Youtube"></a>
                     </div>
                 </div>
             </div>

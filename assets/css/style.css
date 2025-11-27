@@ -260,6 +260,9 @@ nav .logo img {
 .primary-header.sticking nav .logo img {
   filter: brightness(0) invert(0);
 }
+.primary-header.sticking .menu-btn span{
+  background: var(--newblue);
+}
 
 /* Navigation links */
 nav ul {
@@ -319,10 +322,161 @@ nav .menuIsOpen .mio_content p {
 nav .menuIsOpen .mio_content a {
   font-size: 1.5rem;
 }
+.chevron-wrapper{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+nav .chevron{
+  width: 2rem;
+  height: auto;
+  filter: invert(1);
+}
 
 nav .hidden {
   display: none;
 }
+.menu-btn-wrapper{
+  display: none;
+}
+/*Mobile */
+@media (max-width: 640px){
+  nav .nav-items, .wacta{
+    display: none;
+  }
+
+/* Menu Boton*/
+.menu-btn-wrapper{
+  display: block;
+  border-radius: 2px;
+}
+.menu-btn-wrapper .menu-btn{
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+.menu-btn span{
+  display: block;
+  width: 100%;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,0.3);
+  border-radius: 3px;
+  height: 4px;
+  background: #fff;
+  transition: all .3s;
+  position: relative;
+}
+.menu-btn span + span {
+  margin-top: .7rem;
+}
+.active span:nth-child(1) {
+  animation: ease .7s top forwards;
+}
+
+.not-active span:nth-child(1) {
+  animation: ease .7s top-2 forwards;
+}
+
+.active span:nth-child(2) {
+  animation: ease .7s scaled forwards;
+}
+
+.not-active span:nth-child(2) {
+  animation: ease .7s scaled-2 forwards;
+}
+
+.active span:nth-child(3) {
+  animation: ease .7s bottom forwards;
+}
+
+.not-active span:nth-child(3) {
+  animation: ease .7s bottom-2 forwards;
+}
+
+@keyframes top {
+  0% {
+    top: 0;
+    transform: rotate(0);
+  }
+  50% {
+    top: 22px;
+    transform: rotate(0);
+  }
+  100% {
+    top: 22px;
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes top-2 {
+  0% {
+    top: 22px;
+    transform: rotate(45deg);
+  }
+  50% {
+    top: 22px;
+    transform: rotate(0deg);
+  }
+  100% {
+    top: 0;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes bottom {
+  0% {
+    bottom: 0;
+    transform: rotate(0);
+  }
+  50% {
+    bottom: 22px;
+    transform: rotate(0);
+  }
+  100% {
+    bottom: 22px;
+    transform: rotate(135deg);
+  }
+}
+
+@keyframes bottom-2 {
+  0% {
+    bottom: 22px;
+    transform: rotate(135deg);
+  }
+  50% {
+    bottom: 22px;
+    transform: rotate(0);
+  }
+  100% {
+    bottom: 0;
+    transform: rotate(0);
+  }
+}
+
+@keyframes scaled {
+  50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes scaled-2 {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+}
+body.nav-open {
+  overflow: hidden;
+}
+
 
 /* ------------------- */
 /* PUNTAL GSAP.        */
@@ -427,6 +581,97 @@ nav .hidden {
   color: var(--justwhite);  /* asegura contraste */
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* opcional, si hay imagen detrás */
 }
+@media (max-width: 640px) {
+
+  /* HERO MOBILE: edificio como fondo, puntal flotando a la derecha */
+
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    padding-block: 6rem 4rem;        /* aire arriba (nav) y abajo */
+    padding-inline: 1.8rem;
+    overflow: hidden;
+
+    /* 👇 usa la misma imagen del hero como fondo */
+    background-image: url("../img/herobuild.png"); /* ajusta ruta si es distinto */
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+  .hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 30, 48, 0.75) 0%,     /* azul construteks muy profundo */
+    rgba(15, 30, 48, 0.50) 50%,   /* suaviza */
+    rgba(15, 30, 48, 0.25) 75%,   /* transición */
+    rgba(15, 30, 48, 0.00) 100%   /* deja ver imagen abajo */
+  );
+  z-index: 0;
+}
+
+
+  /* Apagamos la imagen de edificio como <img>, ya es fondo */
+  .hero-img-wrapper .wrapper-relative {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+
+  .wrapper-relative .hero-building {
+    display: none;
+  }
+
+  /* Puntal anclado al lado derecho del hero */
+  .wrapper-relative .puntal {
+    position: absolute;
+    right: -6%;        /* ajusta: -10%, -4%, etc según gusto */
+    bottom: 0;
+    transform: none;   /* quitamos el translate de desktop */
+    max-height: 80vh;  /* que no se salga demasiado */
+    z-index: 0;
+  }
+
+  /* Contenido por encima del fondo */
+  .hero-section .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    padding-left: 0;
+  }
+
+  .hero-section .hero-card {
+    border-radius: 0;
+    background-color: transparent;/* o un overlay suave si hace falta */
+    box-shadow: none;
+    padding: 2.4rem 1rem 3.2rem;
+    height: auto;                  /* deja que el contenido mande */
+  }
+
+  .hero-section .hero-card h1 {
+    font-size: 3.8rem;
+  }
+
+  .hero-section .hero-card p {
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 1);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+  }
+
+  .hero-card .hero-btn {
+    padding-inline: 1rem;
+    margin-top: 2.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+}
+
 
 /* ------------------- */
 /* FACT SECTION.       */
@@ -445,6 +690,7 @@ body {
   align-items: center;
   text-align: center;
   z-index: 0;
+  padding-block: 6rem;
 }
 .fact-section::before{
   content: '';
@@ -488,8 +734,8 @@ body {
   min-height: 29rem;
   padding: 1rem;
   color: var(--justwhite);
-  backdrop-filter: blur(16px) saturate(200%);
-  -webkit-backdrop-filter: blur(16px) saturate(200%);
+  backdrop-filter: blur(6px) saturate(200%);
+  -webkit-backdrop-filter: blur(6px) saturate(200%);
   background-color: rgba(17, 25, 40, 0.25);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);  
@@ -508,6 +754,7 @@ body {
 .fact-card-wrapper .fact-card .fact-card-title{
   position: absolute;
   top: 0;
+  margin-block: 1rem;
   font-size: 1.8rem;
 }
 .fact-card-wrapper .fact-card .fact-card-content{
@@ -566,6 +813,34 @@ body {
 .fact-footer-btn:hover {
  border-color: var(--blueish);
 }
+/* Mobile */
+@media (max-width: 640px) {
+  .fact-section{
+    background-image:
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    padding: 6rem 2rem;
+  }
+  .fact-section::before{
+  content: none;
+  }
+  .fact-card-wrapper{
+    gap: 5rem;
+    padding-inline: 1rem;
+  }
+  .fact-card-wrapper .fact-card{
+    min-width: 100%;
+    background-color: rgba(17, 25, 40, 0.15);
+    backdrop-filter: blur(1px) saturate(200%);
+    -webkit-backdrop-filter: blur(1px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.fact-footer-btn{
+  margin-top: 2rem;
+}
+}
+
 /* ========================= */
 /* PROYECTOS / OBRA REAL     */
 /* ========================= */
@@ -577,7 +852,7 @@ body {
     linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 40px 40px;
-  padding-block: 8rem;
+  padding-block: 6rem;
 }
 
 .projects-inner {
@@ -755,8 +1030,7 @@ body {
     linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 40px 40px;
-  padding-top: 4rem;
-  padding-bottom: 6rem;
+  padding-block: 6rem;
 }
 .services-section .services-inner{
   max-width: 120rem;
@@ -796,8 +1070,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
   padding: 2.2rem 1.6rem;
+  gap: 1.2rem;
 }
 /* Media */
 .services-card.services-img:hover {
@@ -960,18 +1235,25 @@ body {
 .project-share-form .project-input-group {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.4rem;      /* label – campo */
+  margin-bottom: 1.6rem; /* separación entre grupos */
 } 
 .usuario-contacto{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.6rem;
   margin-bottom: 1rem;
 }
 .usuario-contacto div{
   width: 100%;
+}
+.project-help{
+  font-family: var(--font-normal);
+  font-size: var(--fs-300);
+  font-weight: 500;
+  color: var(--nearblack);
+  margin-bottom: 0.4rem;
 }
 .project-share-form .project-input-group label {
   font-family: var(--font-normal);
@@ -1042,7 +1324,7 @@ position: absolute;
     linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
   background-size: 40px 40px;
-  padding-block: 6rem 3.5rem;
+  padding-block: 6rem 4rem;
 }
 
 .footer-inner {
@@ -1173,12 +1455,16 @@ position: absolute;
 }
 /* RESPONSIVE */
 
-@media (max-width: 900px) {
+@media (max-width: 640px) {
   .footer-main {
     grid-template-columns: 1fr;
     gap: 3rem;
+    text-align: center;
   }
-
+.footer-cta-actions{
+  padding-top: 2rem;
+  justify-content: center;
+}
   .footer-cta-block {
     max-width: 100%;
   }
