@@ -39,7 +39,22 @@
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Servicios Clave</a></li>
                 <li><a href="#">Proyectos Actuales</a></li>
-                <li><a  class="chevron-wrapper" id="menu-btn-open" href="#">Más Opciones <img src="./assets/img/icons/chevron.svg" class="chevron"></img></a></li>
+                <li class="nav-item nav-more">
+                    <a
+                        id="menu-btn-desk"
+                        class="chevron-wrapper"
+                        href="#mega-menu" 
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        aria-controls="mega-menu">
+                        Más Opciones
+                        <img
+                            src="./assets/img/icons/chevron.svg"
+                            class="chevron"
+                            alt="Flecha hacia abajo"
+                            aria-hidden="true"/>
+                    </a>
+                </li>
             </ul>
             <div class="wacta">
                 <a href="#" >Contacto</a>
@@ -51,9 +66,9 @@
                     <span></span>
                 </div>
             </div>
-            <div class="menuIsOpen main-mega-menu grid gap-10 hidden">
+            <div class="menuIsOpen main-mega-menu grid gap-10">
                 <div class="mio_content">
-                    <h4>Navegación Principal</h4>
+                    <h4 class="mio-tittle">Navegación Principal</h4>
                     <div class="mio_item">
                         <p>Sobre Nosotros</p>
                         <a href="#">Conozca màs sobre nuestra empresa y servicios.</a>
@@ -71,12 +86,13 @@
                         <a href="#">Contáctenos para más información y consultas.</a>
                     </div>
                 </div>
-                <div class="mio_content">
-                    <h4>Recursos Adicionales</h4>
-                    <div class="mio_item">
-                        <p>Blog Actual</p>
-                        <a href="#">Artículos recientes sobre la industria de la construcción.</a>
-                    </div>
+                <div class="hide-mobile">
+                    <div class="mio_content">
+                        <h4 class="mio-tittle">Recursos Adicionales</h4>
+                            <div class="mio_item">
+                            <p>Blog Actual</p>
+                            <a href="#">Artículos recientes sobre la industria de la construcción.</a>
+                        </div>
                     <div class="mio_item">
                         <p>Guías Útiles</p>
                         <a href="#">Consejos y trucos para optimizar sus proyectos.</a>
@@ -89,24 +105,6 @@
                         <p>Ofertas Especiales</p>
                         <a href="#">Descubra nuestras promociones y descuentos actuales.</a>
                     </div>
-                </div>
-                <div class="mio_content">
-                    <h4>lorem ipsum</h4>
-                    <div class="mio_item">
-                        <p>lorem ipsum</p>
-                        <a href="#">Lorem ipsum dolor sit amet.</a>
-                    </div>
-                    <div class="mio_item">
-                        <p>lorem ipsum</p>
-                        <a href="#">Lorem ipsum dolor sit amet.</a>
-                    </div>
-                    <div class="mio_item">
-                        <p>lorem ipsum</p>
-                        <a href="#">Lorem ipsum dolor sit amet.</a>
-                    </div>
-                    <div class="mio_item">
-                        <p>lorem ipsum</p>
-                        <a href="#">Lorem ipsum dolor sit amet.</a>
                     </div>
                 </div>
                 <div class="mio_content">
@@ -119,6 +117,27 @@
                         <p>lorem ipsum</p>
                         <a href="#">Lorem ipsum dolor sit amet.</a>
                     </div>
+                    <div class="mio_item">
+                        <p>lorem ipsum</p>
+                        <a href="#">Lorem ipsum dolor sit amet.</a>
+                    </div>
+                    <div class="mio_item">
+                        <p>lorem ipsum</p>
+                        <a href="#">Lorem ipsum dolor sit amet.</a>
+                    </div>
+                </div>
+                <div class="hide-mobile">
+                     <div class="mio_content">
+                        <h4>lorem ipsum</h4>
+                        <div class="mio_item">
+                            <p>lorem ipsum</p>
+                            <a href="#">Lorem ipsum dolor sit amet.</a>
+                        </div>
+                        <div class="mio_item">
+                            <p>lorem ipsum</p>
+                            <a href="#">Lorem ipsum dolor sit amet.</a>
+                    </div>
+                </div>
                 </div>
             </div>
         </nav>
@@ -354,7 +373,7 @@
                             <p>Te ofrecemos asesoría técnica especializada, adaptada a las características y retos específicos de tu proyecto.</p>
                         </div>
                     </article>
-                    <article class="services-card services-img">
+                    <article class="services-card services-img hide-mobile">
                         <div class="services-construteks">
 
                         </div>
@@ -433,8 +452,7 @@
                                         placeholder="Cuéntanos condiciones de carga, claros, tipo de estructura o cualquier dato relevante."
                                         maxlength="500"
                                         aria-describedby="nota-help"
-                                        required>
-                            </textarea>
+                                        required></textarea>
                             <p id="nota-help" class="project-help">Hasta 500 Caracteres.</p>
                         </div>
                         <div class="project-input-usuario">
@@ -473,7 +491,7 @@
                                 <input  id="compania"
                                     name="compania"
                                     placeholder="De que Compania nos contactas"
-                                    type="text">
+                                    type="text" tabindex="-1">
                             </div>
                             <div class="project-input-group">
                                 <label  for="ciudad">Ciudad</label>
@@ -483,6 +501,7 @@
                                     type="text">
                             </div>
                         </div>
+                        <input type="hidden" id="form_ts" name="form_ts" value="">
                         <button class="project-footer-btn cta-btn-card">
                             Enviar mi proyecto
                         </button>

@@ -19,6 +19,7 @@ $telefono    = trim($_POST["telefono"] ?? "");
 $correo      = trim($_POST["correo"] ?? "");
 $ciudad      = trim($_POST["ciudad"] ?? "");
 $compania    = trim($_POST["compania"] ?? "");
+$formTs      = isset($_POST["form_ts"]) ? (int) $_POST["form_ts"] : 0;
 
 /* -------------------------------------------------------
    3. Validaciones (proyecto) y HP
@@ -28,6 +29,16 @@ if (!empty($compania)) {
     // Fingimos éxito, pero NO enviamos correo.
     header("Location: index.html?msg=exito");
     exit;
+}
+
+// Si llega timestamp del cliente, validar envío mínimo en 3s
+if ($formTs > 0) {
+    $now = $_SERVER["REQUEST_TIME_FLOAT"] ?? microtime(true);
+    $elapsed = $now - ($formTs / 1000);
+    if ($elapsed < 3) {
+        header("Location: index.html?msg=fast");
+        exit;
+    }
 }
 
 if ($tipo === "") {
