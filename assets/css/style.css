@@ -128,8 +128,8 @@
 
 /* === BASE === */
 .cta-btn {
-  padding: 1.6rem 3rem;
-  min-width: 14rem;
+  padding: 2rem 3.4rem;
+  min-width: 18rem;
   border-radius: 6px;
   border: 1px solid #000;
   font-weight: 500;
@@ -206,42 +206,49 @@
 /* ------------------- */
 /* NAVIGATION BAR      */
 /* ------------------- */
+body {
+  background-color: var(--newblue);
+}
 header {
   justify-content: space-between;
 }
 
 /* Header base */
 .primary-header {
-  --_bg: var(--newblue);
+  --_bg: transparent;
   --_logo-color: #fff;
   --_nav-link-color: var(--blueish);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
   z-index: 1000;
   background-color: var(--_bg);
   color: var(--_nav-link-color);
+  backdrop-filter: blur(0);
   transition: background-color 0.5s ease, box-shadow 0.3s ease, color 0.5s ease;
 }
 
 /* Header sticky (on scroll) */
 .primary-header.sticking {
   --_logo-color: #000;
-  --_nav-link-color: #000;
+  --_nav-link-color: var(--newblue);
   --_bg: color-mix(in srgb, var(--newblue), white 85%);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Navigation bar */
 nav {
-  --_currentNavwidth: 100vw;
   background-color: var(--_bg);
   transition: background-color 1.5s ease;
   padding: 1rem 3rem;
-  margin-inline: auto;
+  width: 100%;
+  max-width: 200rem;
+  margin-inline: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: var(--_currentNavwidth);
   height: 7rem;
 }
 
@@ -292,14 +299,19 @@ nav ul a:hover {
 nav .menuIsOpen {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  background-color: rgb(from var(--newblue) r g b / 0.5);
+  background-color: color-mix(in srgb, var(--newblue), white 85%);
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--newblue), white 80%) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--newblue), white 80%) 1px, transparent 1px);
+    background-size: 40px 40px;
+    padding: 6rem 2rem;
   backdrop-filter: blur(10px);
   width: 100%;
   height: auto;
   position: absolute;
   top: 100%;
   left: 50%;
-  color: var(--blueish);
+  color: var(--newblue);
   /* posición base: un pelín abajo y transparente */
   transform: translateX(-50%) translateY(10px);
   opacity: 0;
@@ -310,7 +322,7 @@ nav .menuIsOpen {
   box-shadow:
     rgba(0, 0, 0, 0.19) 0px 10px 20px,
     rgba(0, 0, 0, 0.23) 0px 6px 6px;
-  padding: 2rem 3rem;
+  padding: 4rem 3rem;
   /* aquí vive el fade in/out */
   transition:
     opacity .5s ease-in-out,
@@ -339,13 +351,12 @@ nav .menuIsOpen .mio_content {
   justify-content: space-around;
 }
 nav .menuIsOpen .mio_content .mio-tittle{
-  color: var(--offwhite);
+  color: var(--newblue);
   font-size: var(--fs-500);
   font-weight: 600;
   padding-block: 1rem;
 }
 nav .menuIsOpen .mio_content .mio_item {
-  border: 1px solid green;
   width: 100%;
 }
 
@@ -377,7 +388,7 @@ nav .hide-mobile{
   display: block;
 }
 /*Mobile */
-@media (max-width: 640px){
+@media (max-width: 640px), (max-height: 480px) and (orientation: landscape) {
   nav .nav-items, .wacta{
     display: none;
   }
@@ -532,8 +543,7 @@ nav .hide-mobile{
 /* ------------------- */
 .hero-section {
   width: 100%;
-  height: calc(100vh - 0vh);
-  max-height: 1020px;
+  height: 100vh;
   background-color: var(--newblue);
   position: relative;
   padding-block: clamp(6rem, 10vh, 12rem); /* Ajuste vertical */
@@ -568,6 +578,7 @@ nav .hide-mobile{
   z-index: 901;
   animation: puntal-float 9s ease-in-out infinite;
   will-change: transform;
+  filter: drop-shadow(0 4px 28px rgba(0,0,0,0.32));
 }
 @keyframes puntal-float {
   0%   { transform: var(--puntal-pos) translateY(0); }
@@ -585,7 +596,8 @@ nav .hide-mobile{
 }
 
 .hero-section .hero-card {
-  width: clamp(300px, 85%, 900px);
+  /* width: clamp(300px, 85%, 900px); */
+  width: clamp(400px, 95%, 900px);
   height: max-content;
   padding: 2rem;
   opacity:0;
@@ -600,9 +612,10 @@ nav .hide-mobile{
     transform: translateY(0);
   }
 }
+
 .hero-section .hero-card h1 {
-  max-width: 18ch;
-  font-size: 5.6rem;
+  max-width: 25ch;
+  font-size: 4.8rem;
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.01em;
@@ -618,23 +631,46 @@ nav .hide-mobile{
 .hero-card > * + * {
   margin-top: 2.4rem; /* Spacing interno perfecto */
 }
-.hero-section .hero-card p {
-  font-size: 2.4rem;
-  max-width: 60ch;          /* evita líneas demasiado largas */
-  line-height: 1.6;         /* mejora legibilidad */
+.hero-section .hero-card .hero-subcopy {
+  font-size: 1.8rem;
+  max-width: 50ch;          /* evita líneas demasiado largas */
+  line-height: 1.55;         /* mejora legibilidad */
   color: var(--justwhite);  /* asegura contraste */
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* opcional, si hay imagen detrás */
 }
+.hero-card .micro{
+  padding-bottom: 2rem;
+}
+.micro .hero-kicker{
+  margin-bottom: 0.3rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.18rem;
+  opacity: 0.85;
+}
+.micro .hero-kicker-subcopy{
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  opacity: 0.75;
+}
+.hero-microstory {
+  font-size: 1.2rem;
+  letter-spacing: 0.14em;
+  opacity: 0.75;
+  margin-bottom: 0.6rem; /* espacio justo antes del H1 */
+}
+
 @media (max-width: 640px) {
 
   /* HERO MOBILE: edificio como fondo, puntal flotando a la derecha */
 
   .hero-section {
-    border: 1px solid red;
     position: relative;
     min-height: 100vh;
     padding-block: 7rem 4rem;        /* aire arriba (nav) y abajo */
-    padding-inline: 1.8rem;
+    padding-inline: 1rem;
     overflow: hidden;
 
     /* 👇 usa la misma imagen del hero como fondo */
@@ -649,10 +685,10 @@ nav .hide-mobile{
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(15, 30, 48, 0.75) 0%,     /* azul construteks muy profundo */
-    rgba(15, 30, 48, 0.50) 50%,   /* suaviza */
-    rgba(15, 30, 48, 0.25) 75%,   /* transición */
-    rgba(15, 30, 48, 0.00) 100%   /* deja ver imagen abajo */
+    rgba(15, 30, 48, 0.40) 0%,     /* o: .75 / 0% azul construteks muy profundo */
+    rgba(15, 30, 48, 0.85) 30%,   /* o: .50 / 50% suaviza */
+    rgba(15, 30, 48, 0.85) 65%,   /* o: .25 / 75% transición */
+    rgba(48, 15, 15, 0) 100%   /* 0: .00 / 100%deja ver imagen abajo */
   );
   z-index: 0;
 }
@@ -672,10 +708,10 @@ nav .hide-mobile{
   /* Puntal anclado al lado derecho del hero */
   .wrapper-relative .puntal {
     position: absolute;
-    right: -6%;        /* ajusta: -10%, -4%, etc según gusto */
+    right: -10%;        /* ajusta: -10%, -4%, etc según gusto */
     bottom: 0;
     transform: none;   /* quitamos el translate de desktop */
-    max-height: 80vh;  /* que no se salga demasiado */
+    max-height: 72vh;  /* que no se salga demasiado */
     z-index: 0;
   }
 
@@ -693,15 +729,16 @@ nav .hide-mobile{
     box-shadow: none;
     padding: 2.4rem 1rem 3.2rem;
     height: auto;                  /* deja que el contenido mande */
+    max-width: 90%;
   }
 
   .hero-section .hero-card h1 {
-    font-size: clamp(2.8rem, 8vw, 3.8rem);
+    font-size: clamp(2.6rem, 7vw, 3.4rem);
     line-height: 1.15;
   }
 
 
-  .hero-section .hero-card p {
+  .hero-section .hero-card .hero-subcopy{
     font-size: clamp(1.6rem, 4vw, 1.8rem);
     line-height: 1.6;
     max-width: 36ch;
@@ -712,22 +749,56 @@ nav .hide-mobile{
      -moz-osx-font-smoothing: grayscale;
   }
 
-  .hero-card .hero-btn {
+/*   .hero-card .hero-btn {
     padding-inline: 1rem;
     margin-top: 2.4rem;
     display: flex;
-    flex-direction: column;
     gap: 1.2rem;
+  } */
+}
+/*LANDSCAPE MODE       */
+@media (max-height: 480px) and (orientation: landscape) {
+  .hero-section {
+    padding-top: 5rem; /* porque la nav flota */
+    padding-bottom: 2rem;
   }
+  .hero-card {
+    gap: 0.6rem; /* compactamos el ritmo */
+  }
+  .hero-section .hero-card h1 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.15;
+    margin-bottom: 0.6rem;
+  }
+  .hero-section .hero-card .hero-subcopy{
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    line-height: 1.6;
+  }
+  .hero-section .micro{
+    padding-bottom: .5rem;
+  }
+  .hero-section .hero-kicker,
+.hero-section .section-kicker-subcopy,
+.hero-section .hero-microstory {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
 }
 
+  .wrapper-relative .puntal {
+    max-height: 70vh;
+    right: -8%;
+    bottom: 0;
+  }
+    .cta-btn {
+    padding: 0.6rem 1.4rem;
+    font-size: 1.2rem;
+  }
+}
 
 /* ------------------- */
 /* FACT SECTION.       */
 /* ------------------- */
-body {
-  position: relative;
-}
+
 
 .fact-section {
   position: relative;
@@ -766,11 +837,15 @@ body {
 }
 .fact-section h2{
   line-height: 1.15;
-  padding: 1rem;
+  margin-bottom: 2.4rem;
 }
-.fact-section .fact-sub{
-  margin: 1rem;
-  line-height: 1.4;
+.fact-section .fact-sub-copy{
+  line-height: 1.45;
+  margin-bottom: 1.6rem;
+}
+.fact-section .fact-sub-copy2{
+  line-height: 1.45;
+  margin-bottom: 3rem;
 }
 .fact-card-wrapper{
   width: 100%;
